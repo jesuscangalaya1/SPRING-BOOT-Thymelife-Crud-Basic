@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Students</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<body>
+<!--Esto es un navbar de Bootstrap 4-->
+<nav class="navbar navbar-expand-md bg-dark navbar-dark">
+    <a class="navbar-brand" href="#">Control of Students</a>
+    <div class="collapse navbar-collapse" id="collapsibleNavbar">
+        <ul class="navbar-nav">
+            <li class="nav-item"><a class="nav-link" th:href="@{/students}">Control of Students</a></li>
+        </ul>
+    </div>
+</nav>
+<br>
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-6 col-md-6 col-sm-6 container justify-content-center card">
+            <h1 class="text-center">Edition of Students</h1>
+            <div class="card-body">
+                <form th:action="@{/students/{id}(id=${student.id})}" th:object="${student}" method="POST">
+                    <div class="form-group">
+                        <label>Nombre :</label>
+                        <input type="text" class="form-control" name="name" th:field="*{name}"
+                               placeholder="Digit you Name" required>
+                    </div>
+                    <br>
+                    <div class="form-group">
+                        <label>SurName :</label>
+                        <input type="text" class="form-control" name="surname" th:field="*{surname}"
+                               placeholder="Digit you SurName" required>
+                    </div>
+                    <br>
+                    <div class="form-group">
+                        <label>Email :</label>
+                        <input type="email" class="form-control" name="email" th:field="*{email}"
+                               placeholder="Digit you Email" required>
+                    </div>
+                    <br>
+                    <div class="box-footer">
+                        <button class="btn btn-success"> Save</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

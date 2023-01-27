@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title> List Students</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<body>
+<!--Esto es un navbar de Bootstrap 4-->
+<nav class="navbar navbar-expand-md bg-dark navbar-dark">
+    <a class="navbar-brand" href="#">Control of Students</a>
+    <div class="collapse navbar-collapse" id="collapsibleNavbar">
+        <ul class="navbar-nav">
+            <li class="nav-item"><a class="nav-link" th:href="@{/students}">Control of Students</a></li>
+        </ul>
+    </div>
+</nav>
+
+<!-- Estos es una tabla de Bootstrap 4 -->
+<div class="container">
+    <div class="row">
+        <h1>List of Students</h1>
+    </div>
+    <div class="row">
+        <div class="col-lg-3">
+            <a th:href="@{/students/new}" class="btn btn-primary btn-sm-- mb3">Add Student</a>
+        </div>
+    </div>
+    <br>
+    <table class="table table-striped table-bordered">
+        <thead class="table-dark">
+        <tr>
+            <td>Name</td>
+            <td>SurName</td>
+            <td>Email</td>
+            <td> Acciones</td>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="student : ${students}">
+            <td th:text="${student.name}">Name</td>
+            <td th:text="${student.surname}">SurName</td>
+            <td th:text="${student.email}">Email</td>
+
+            <td>
+                <a th:href="@{/students/edit/{id}(id=${student.id})}" class="btn btn-info">Edit</a>
+                <a th:href="@{/students/{id}(id=${student.id})}" class="btn btn-danger">Delete</a>
+            </td>
+        </tr>
+
+        </tbody>
+    </table>
+</div>
+
+
+</body>
+</html>
